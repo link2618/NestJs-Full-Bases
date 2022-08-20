@@ -6,3 +6,6 @@
 
 1. Levantar base de datos
 ```docker compose up -d```
+
+2. Ejecutar SEED (Metodo Get)
+```localhost:4000/api/seed```
