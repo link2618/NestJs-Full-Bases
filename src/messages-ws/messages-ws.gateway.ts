@@ -2,7 +2,7 @@ import { JwtService } from '@nestjs/jwt';
 import { OnGatewayConnection, OnGatewayDisconnect, SubscribeMessage, WebSocketGateway, WebSocketServer } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
 
-import { JwtPayload } from 'src/auth/interfaces';
+import { JwtPayload } from '../auth/interfaces';
 import { NewMessageDto } from './dto/new-message.dto';
 import { MessagesWsService } from './messages-ws.service';
 

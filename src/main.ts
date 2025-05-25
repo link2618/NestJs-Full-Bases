@@ -1,18 +1,20 @@
-import { ValidationPipe } from '@nestjs/common';
+import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 import { AppModule } from './app.module';
 
-async function bootstrap() {
+export async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const logger = new Logger('Bootstrap');
 
   app.setGlobalPrefix('api');
+  app.enableCors();
 
   app.useGlobalPipes( 
     new ValidationPipe({
-    whitelist: true,
-    forbidNonWhitelisted: true,
+      whitelist: true,
+      forbidNonWhitelisted: true,
     })
    );
 
@@ -29,6 +31,8 @@ async function bootstrap() {
     },
   });
 
-  await app.listen(4000);
+  const PORT = process.env.PORT ?? 4000;
+  await app.listen(PORT);
+  logger.log(`App running on port ${PORT}`);
 }
 bootstrap();

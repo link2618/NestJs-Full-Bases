@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable, InternalServerErrorException, Logger, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from 'src/auth/entities/user.entity';
-import { PaginationDto } from 'src/common/dto/pagination.dto';
+import { User } from '../auth/entities/user.entity';
+import { PaginationDto } from '../common/dto/pagination.dto';
 import { DataSource, Repository } from 'typeorm';
 import { validate as isUUID } from 'uuid';
 

@@ -16,7 +16,7 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('register')
-  create(@Body() createUserDto: CreateUserDto) {
+  createUser(@Body() createUserDto: CreateUserDto) {
     return this.authService.create(createUserDto);
   }
 
@@ -38,7 +38,7 @@ export class AuthController {
   @Get('private')
   @UseGuards( AuthGuard() )
   testingPrivateRoute(
-    // @Req() request: Express.Request,
+    @Req() request: Express.Request,
     @GetUser() user: User,
     @GetUser('email') userEmail: string,
     // @GetUser(['email', 'dato2']) userEmail: string,
